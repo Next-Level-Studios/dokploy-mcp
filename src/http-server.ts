@@ -9,7 +9,7 @@ import { createServer } from "./server.js";
 import { createLogger } from "./utils/logger.js";
 
 // Container always uses port 3000 internally
-const PORT = 3000;
+const PORT = 3222;
 const logger = createLogger("MCP-HTTP-Server");
 
 export async function main() {
