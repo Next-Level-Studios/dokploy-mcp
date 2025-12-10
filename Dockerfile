@@ -25,12 +25,13 @@ COPY package.json ./
 RUN npm install --production --ignore-scripts
 
 # Expose port 3000 (internal container port)
-EXPOSE 3000
+EXPOSE 3222
+
 
 # Add health check for HTTP mode
 HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
   CMD if [ "$MCP_TRANSPORT" = "http" ] || [ "$MCP_TRANSPORT" = "sse" ]; then \
-        wget --no-verbose --tries=1 --spider http://localhost:3000/health || exit 1; \
+        wget --no-verbose --tries=1 --spider http://localhost:3222/health || exit 1; \
       else \
         exit 0; \
       fi
